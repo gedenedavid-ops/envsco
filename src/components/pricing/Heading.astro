@@ -1,10 +1,40 @@
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-col gap-4 sm:gap-6">
-      <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">Pricing</h1>
-      <p class="text-primary-950/70 dark:text-primary-200/70 mx-auto max-w-xl text-lg sm:text-xl">
-        Choose the plan that best suits your needs.
+<section 
+  class="py-20 sm:py-28 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
+
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
+
+    <!-- Bloc VisionOS -->
+    <div
+      class="relative flex flex-col items-center gap-6 sm:gap-8 rounded-3xl px-8 py-16
+             backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+             shadow-[0_0_40px_rgba(120,160,255,0.15)]
+             transition-all duration-700 hover:shadow-[0_0_55px_rgba(120,160,255,0.25)]"
+    >
+
+      <!-- Glow interne VisionOS -->
+      <div 
+        class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+               bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+      ></div>
+
+      <!-- Contenu -->
+      <h1 class="relative z-10 text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl text-gray-900 dark:text-white">
+        Tarification
+      </h1>
+
+      <p class="relative z-10 text-neutral-700 dark:text-neutral-300 mx-auto max-w-xl text-lg sm:text-xl leading-relaxed">
+        ENVSCO est actuellement en phase pilote. Les établissements partenaires bénéficient d’un accès privilégié avant le lancement officiel.
       </p>
+
     </div>
   </div>
 </section>

@@ -1,29 +1,91 @@
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-col gap-16">
-      <div class="flex flex-col items-start gap-8 sm:gap-10">
-        <div class="flex max-w-xl flex-col items-start gap-4 sm:gap-6">
-          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
-            We design and build your next digital experience
-          </h1>
-          <p class="text-primary-950/70 dark:text-primary-200/70 text-lg sm:text-xl">
-            Anim aute id magna aliqua ad ad non deserunt sunt.
-          </p>
-        </div>
-        <a
-          href="/pricing"
-          class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+<section 
+  class="pt-16 pb-24 sm:pt-20 sm:pb-28 lg:pt-24 lg:pb-32 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50, offsetY: 0 }"
+  @mousemove="lightX = ($event.clientX / window.innerWidth) * 100; lightY = ($event.clientY / window.innerHeight) * 100"
+  @mousemove.window="offsetY = ($event.clientY / window.innerHeight) * 10"
+  x-init="$el.classList.add('opacity-0','translate-y-6'); setTimeout(()=>{$el.classList.remove('opacity-0','translate-y-6')},80)"
+>
+
+  <!-- Lumière dynamique Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(80,140,255,0.25), transparent 60%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+    <div 
+      class="flex flex-col items-start gap-12 max-w-3xl"
+      :style="`transform: translateY(${offsetY}px)`"
+    >
+
+      <!-- TITRE + BADGE EN DESSOUS -->
+      <div class="flex flex-col items-start gap-3">
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white leading-[1.05]">
+          ENVSCO
+        </h1>
+
+        <!-- BADGE BLEU PREMIUM -->
+        <span
+          class="px-4 py-1.5 text-sm font-semibold rounded-full
+                 bg-gradient-to-r from-blue-600 to-blue-700
+                 dark:from-blue-500 dark:to-blue-600
+                 text-white shadow-lg shadow-blue-500/20
+                 border border-blue-400/40 dark:border-blue-500/40
+                 backdrop-blur-xl"
         >
-          Get started
-        </a>
+          Phase pilote
+        </span>
       </div>
-      <img
-        class="h-auto w-full rounded-3xl"
-        width="1280"
-        height="640"
-        src="/assets/hero.webp"
-        alt="Hero picture"
-      />
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-gray-800 dark:text-gray-200 leading-tight">
+        L’école inclusive.
+      </h2>
+
+      <!-- TEXTE SIMPLE -->
+      <p class="text-gray-600 dark:text-gray-300 text-lg sm:text-xl leading-relaxed max-w-xl">
+        Une plateforme moderne et intuitive pour simplifier la gestion scolaire et améliorer la communication entre les écoles, les enseignants et les familles.
+      </p>
+
+      <p class="text-gray-500 dark:text-gray-400 text-base sm:text-lg leading-relaxed max-w-xl">
+        Pensée pour les réalités des établissements ivoiriens, sans complexité inutile.
+      </p>
+
+      <!-- CTA -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:gap-6 space-y-3 sm:space-y-0 pt-4">
+
+        <!-- Bouton -->
+        <a
+          href="#contact"
+          class="inline-flex items-center justify-center gap-3 rounded-xl px-8 py-4
+                 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600
+                 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-400 dark:hover:to-blue-500
+                 text-white font-semibold text-lg shadow-lg hover:shadow-xl 
+                 transform hover:scale-[1.03] active:scale-95 
+                 transition-all duration-300 ease-out"
+        >
+          Devenir école pilote
+          <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+
+        <!-- Texte à droite -->
+        <p class="text-sm text-gray-500 dark:text-gray-400 max-w-md sm:mt-0 sm:ml-2">
+          Pour les écoles intéressées par une solution simple et efficace
+        </p>
+
+      </div>
+
     </div>
   </div>
 </section>
+
+<style>
+/* Glow subtil Vision Pro */
+.shadow-2xl {
+  box-shadow: 0 20px 50px -10px rgba(0,0,0,0.15);
+}
+.dark .shadow-2xl {
+  box-shadow: 0 20px 50px -10px rgba(0,0,0,0.35);
+}
+</style>

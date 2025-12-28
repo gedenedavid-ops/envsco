@@ -1,87 +1,150 @@
 ---
 const pricing = [
   {
-    name: 'Basic',
-    description: 'For development, staging, and small production projects.',
-    periodicity: '/month',
-    price: '$10',
-    action: 'Buy Now',
-    features: ['5 Seats', '1,000 Projects', 'Lifetime access', 'Community Support'],
-  },
-  {
-    name: 'Pro',
-    description: 'For high-scale and mission critical projects.',
-    isFlagged: true,
-    periodicity: '/month',
-    price: '$25',
-    action: 'Buy Now',
-    features: ['10 Seats', '10,000 Projects', 'Lifetime access', 'Email Support', 'Free updates'],
-  },
-  {
-    name: 'Team',
-    description: 'For teams with more security, support, and performance needs.',
+    name: 'École pilote',
+    description:
+      "Accès complet aux fonctionnalités en développement, participation directe à la co‑construction d’ENVSCO et accompagnement personnalisé.",
     periodicity: '',
-    price: 'Custom',
-    action: 'Buy Now',
+    price: 'Gratuit',
+    action: 'Devenir école pilote',
     features: [
-      'Unlimited Seats',
-      'Unlimited Projects',
-      'Lifetime access',
-      'Email and Chat Support',
-      'High-Performance',
-      'Free updates',
+      'Accès complet',
+      'Accompagnement dédié',
+      'Mises à jour prioritaires',
+      'Participation à la roadmap',
+    ],
+  },
+  {
+    name: 'Partenaire',
+    isFlagged: true,
+    description:
+      "Pour les établissements souhaitant un accès anticipé aux modules avancés, avec support renforcé et intégration personnalisée.",
+    periodicity: '',
+    price: 'Sur demande',
+    action: 'Nous contacter',
+    features: [
+      'Accès anticipé',
+      'Support prioritaire',
+      'Intégration personnalisée',
+      'Modules avancés',
+      'Mises à jour continues',
+    ],
+  },
+  {
+    name: 'Tarification finale',
+    description:
+      "Les plans tarifaires officiels seront dévoilés lors du lancement public d’ENVSCO, après la phase pilote.",
+    periodicity: '',
+    price: 'À venir',
+    action: 'Rester informé',
+    features: [
+      'Plans adaptés aux écoles',
+      'Modules évolutifs',
+      'Support dédié',
+      'Mises à jour régulières',
     ],
   },
 ];
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="-mt-8 grid gap-8 lg:mt-0 lg:grid-cols-3">
-      {
-        pricing.map((item) => (
-          <div
-            class:list={[
-              'relative flex flex-col gap-8 rounded-3xl p-8',
-              item.isFlagged && 'bg-primary-500/10 dark:bg-primary-400/10',
-            ]}
-          >
-            <div class="flex-1">
-              <h2 class="text-xl font-medium">{item.name}</h2>
-              <p class="mt-4 flex items-baseline">
-                <span class="text-4xl font-medium tracking-tight">{item.price}</span>
-                <span class="text-primary-950/70 dark:text-primary-200/70 ml-1 text-sm font-medium">
-                  {item.periodicity}
-                </span>
-              </p>
-              <p class="text-primary-950/70 dark:text-primary-200/70 mt-6">{item.description}</p>
+<section 
+  class="py-20 sm:py-28 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
 
-              <ul role="list" class="mt-6 space-y-6">
-                {item.features.map((feature) => (
-                  <li class="flex gap-3">
-                    <svg
-                      class="text-primary-600 dark:text-primary-400 h-6 w-6 flex-shrink-0"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11.0026 16L18.0737 8.92893L16.6595 7.51472L11.0026 13.1716L8.17421 10.3431L6.75999 11.7574L11.0026 16Z" />
-                    </svg>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <a
-              href="#"
-              class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex w-full items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-            >
-              Buy now
-            </a>
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+
+    <div class="grid gap-10 lg:grid-cols-3">
+
+      {pricing.map((item) => (
+        <div
+          class={[
+            'relative flex flex-col gap-8 rounded-3xl p-8 backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10',
+            'shadow-[0_0_35px_rgba(120,160,255,0.15)] hover:shadow-[0_0_55px_rgba(120,160,255,0.25)]',
+            'transition-all duration-700 hover:scale-[1.03]',
+            item.isFlagged && 'ring-2 ring-emerald-400/40 dark:ring-emerald-500/40'
+          ].join(' ')}
+        >
+
+          <!-- Glow interne VisionOS -->
+          <div 
+            class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                   bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+          ></div>
+
+          <!-- Badge recommandé -->
+          {item.isFlagged && (
+            <span class="absolute -top-3 right-4 bg-emerald-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+              Recommandé
+            </span>
+          )}
+
+          <div class="relative z-10 flex-1">
+            <h2 class="text-xl font-medium text-gray-900 dark:text-white">{item.name}</h2>
+
+            <p class="mt-4 flex items-baseline">
+              <span class="text-4xl font-medium tracking-tight text-gray-900 dark:text-white">{item.price}</span>
+              <span class="text-neutral-600 dark:text-neutral-400 ml-1 text-sm font-medium">
+                {item.periodicity}
+              </span>
+            </p>
+
+            <p class="text-neutral-700 dark:text-neutral-300 mt-6 leading-relaxed">
+              {item.description}
+            </p>
+
+            <ul role="list" class="mt-6 space-y-6">
+              {item.features.map((feature) => (
+                <li class="flex gap-3">
+                  <svg
+                    class="text-emerald-600 dark:text-emerald-400 h-6 w-6 flex-shrink-0"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-6l6.071-6.071-1.414-1.414L11 13.172l-2.828-2.829-1.414 1.415L11 16z" />
+                  </svg>
+                  <span class="text-neutral-700 dark:text-neutral-300">{feature}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        ))
-      }
+
+          <!-- Bouton premium ENVSCO -->
+          <a
+            href="/contact"
+            class="relative z-10 group bg-gradient-to-r from-emerald-200 to-emerald-300 hover:from-emerald-300 hover:to-emerald-400
+                   dark:from-emerald-700 dark:to-emerald-800 dark:hover:from-emerald-800 dark:hover:to-emerald-900
+                   inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3 
+                   text-base font-semibold text-black dark:text-white shadow-xl hover:shadow-2xl 
+                   hover:shadow-emerald-500/25 dark:hover:shadow-emerald-400/25
+                   border border-emerald-300/40 hover:border-emerald-400/60
+                   dark:border-emerald-600/20 dark:hover:border-emerald-500/40
+                   transform hover:-translate-y-1 hover:scale-105 
+                   transition-all duration-300 ease-out"
+          >
+            <svg class="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+
+            {item.action}
+
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+
+        </div>
+      ))}
+
     </div>
   </div>
 </section>

@@ -1,70 +1,106 @@
 ---
-const testimonials = [
+interface Testimonial {
+  name: string;
+  description: string;
+  message: string;
+}
+
+const testimonials: Testimonial[] = [
   {
-    name: 'Rebecca Hayes',
-    description: 'Designer',
-    image: '/assets/testimonial-1.webp',
+    name: 'Simplicité avant tout',
+    description: 'Une expérience pensée pour alléger le quotidien scolaire.',
     message:
-      '“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”',
+      '“ENVSCO propose une approche moderne et progressive, centrée sur la simplicité et l’efficacité. Les écoles pilotes bénéficient d’un accompagnement personnalisé.”',
   },
   {
-    name: 'Rosa Spencer',
-    description: 'Team Leader',
-    image: '/assets/testimonial-2.webp',
+    name: 'Co‑construction',
+    description: 'Les écoles participent directement à l’évolution de la plateforme.',
     message:
-      '“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”',
+      '“Nous développons ENVSCO main dans la main avec les établissements, afin de créer un outil réellement adapté aux besoins du terrain.”',
   },
   {
-    name: 'Christina Upton',
-    description: 'Manager',
-    image: '/assets/testimonial-3.webp',
+    name: 'Innovation responsable',
+    description: 'Une vision long terme, centrée sur l’humain.',
     message:
-      '“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”',
+      '“Notre objectif est de moderniser l’éducation sans la complexifier. Chaque fonctionnalité est pensée pour améliorer la communication et le suivi scolaire.”',
   },
 ];
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="v mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-col items-center gap-12 lg:gap-20">
-      <h2 class="mx-auto max-w-xl text-center text-3xl font-medium tracking-tight sm:text-4xl">
-        Trusted by the largest companies in the world
+<section 
+  class="py-16 sm:py-20 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
+
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+
+    <div class="flex flex-col items-center gap-16 lg:gap-24">
+
+      <!-- Titre -->
+      <h2 class="mx-auto max-w-xl text-center text-3xl font-medium tracking-tight sm:text-4xl text-gray-900 dark:text-white">
+        Pourquoi les écoles nous rejoignent
       </h2>
+
+      <!-- Grille VisionOS -->
       <div
-        class="divide-primary-900/10 dark:divide-primary-300/10 grid divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0"
+        class="grid gap-y-12 lg:gap-y-0 lg:grid-cols-3 lg:gap-x-12 
+               divide-y lg:divide-y-0 lg:divide-x divide-white/10 dark:divide-white/5"
       >
-        {
-          testimonials.map((testimonial) => (
-            <figure class="mx-auto flex max-w-lg flex-col items-center gap-6 py-8 lg:px-8 lg:py-0">
-              <div class="flex flex-row gap-2">
-                {[...Array(3)].map(() => (
-                  <svg
-                    class="text-primary-600 dark:text-primary-400 h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" />
-                  </svg>
-                ))}
+        {testimonials.map((testimonial: Testimonial) => (
+          <figure 
+            class="relative mx-auto flex max-w-lg flex-col items-center gap-8 py-12 px-10
+                   backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+                   rounded-3xl shadow-[0_0_40px_rgba(120,160,255,0.15)]
+                   transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_55px_rgba(120,160,255,0.25)]"
+          >
+
+            <!-- Glow interne VisionOS -->
+            <div 
+              class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                     bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+            ></div>
+
+            <!-- Étoiles -->
+            <div class="relative z-10 flex flex-row gap-2">
+              {[...Array(3)].map(() => (
+                <svg
+                  class="text-black dark:text-white h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" />
+                </svg>
+              ))}
+            </div>
+
+            <!-- Message -->
+            <blockquote class="relative z-10 text-neutral-700 dark:text-neutral-300 text-center text-lg italic leading-loose">
+              <p>{testimonial.message}</p>
+            </blockquote>
+
+            <!-- Auteur -->
+            <figcaption class="relative z-10 flex flex-col gap-2 text-center">
+              <div class="text-base font-medium text-gray-900 dark:text-white">
+                {testimonial.name}
               </div>
-              <blockquote class="text-primary-950/70 dark:text-primary-200/70 text-center text-lg italic leading-loose">
-                <p>{testimonial.message}</p>
-              </blockquote>
-              <figcaption class="flex flex-col gap-4">
-                <img class="mx-auto h-8 w-8 rounded-full" src={testimonial.image} alt="" />
-                <div class="text-center">
-                  <div class="text-base font-medium">{testimonial.name}</div>
-                  <div class="text-primary-950/70 dark:text-primary-200/70 text-sm">
-                    {testimonial.description}
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          ))
-        }
+              <div class="text-neutral-600 dark:text-neutral-400 text-sm">
+                {testimonial.description}
+              </div>
+            </figcaption>
+
+          </figure>
+        ))}
       </div>
+
     </div>
   </div>
 </section>

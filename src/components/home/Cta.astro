@@ -1,23 +1,68 @@
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
+<section 
+  class="py-16 sm:py-20 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
+
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
+
+    <!-- Bloc VisionOS -->
     <div
-      class="bg-primary-500/10 dark:bg-primary-400/10 flex flex-col items-center gap-8 rounded-3xl px-5 py-16 sm:gap-10"
+      class="relative flex flex-col items-center gap-10 sm:gap-12 rounded-3xl px-8 py-16
+             backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+             shadow-[0_0_40px_rgba(120,160,255,0.15)]
+             transition-all duration-700 hover:shadow-[0_0_55px_rgba(120,160,255,0.25)]"
     >
-      <div class="flex flex-col gap-4 sm:gap-6">
-        <h2 class="mx-auto max-w-sm text-3xl font-medium tracking-tight sm:text-4xl">
-          Let's make something amazing together
+
+      <!-- Glow interne VisionOS -->
+      <div 
+        class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+               bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+      ></div>
+
+      <!-- Contenu -->
+      <div class="relative z-10 flex flex-col gap-6 sm:gap-8">
+        <h2 class="mx-auto max-w-sm text-3xl font-medium tracking-tight sm:text-4xl text-gray-900 dark:text-white">
+          Construisons l’avenir scolaire ensemble
         </h2>
-        <p class="text-primary-950/70 dark:text-primary-200/70 mx-auto max-w-2xl text-lg">
-          Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing
-          sagittis vel nulla nec.
+
+        <p class="text-neutral-700 dark:text-neutral-300 mx-auto max-w-2xl text-lg leading-relaxed">
+          ENVSCO recherche des écoles pilotes pour co‑créer un environnement scolaire numérique 
+          simple, moderne et réellement utile. Votre établissement peut participer à façonner 
+          les outils éducatifs de demain.
         </p>
       </div>
+
+      <!-- Bouton premium ENVSCO -->
       <a
         href="/contact"
-        class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+        class="relative z-10 group bg-gradient-to-r from-emerald-200 to-emerald-300 hover:from-emerald-300 hover:to-emerald-400
+               dark:from-emerald-700 dark:to-emerald-800 dark:hover:from-emerald-800 dark:hover:to-emerald-900
+               inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 
+               text-lg font-semibold text-black dark:text-white shadow-xl hover:shadow-2xl 
+               hover:shadow-emerald-500/25 dark:hover:shadow-emerald-400/25
+               border border-emerald-300/40 hover:border-emerald-400/60
+               dark:border-emerald-600/20 dark:hover:border-emerald-500/40
+               transform hover:-translate-y-1 hover:scale-105 
+               transition-all duration-300 ease-out"
       >
-        Contact us
+        <svg class="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+
+        Nous contacter
+
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
       </a>
+
     </div>
   </div>
 </section>

@@ -1,59 +1,202 @@
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="grid gap-12 lg:grid-cols-2 lg:gap-8">
-      <div class="flex flex-col gap-4 sm:gap-6">
-        <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Let's work together</h2>
-        <p class="text-primary-950/70 dark:text-primary-200/70 max-w-lg text-lg sm:text-xl">
-          We'd love to learn more about you and what we can build together.
+<section 
+  class="py-24 sm:py-32 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
+
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+
+    <div class="grid gap-16 lg:grid-cols-2 lg:gap-12">
+
+      <!-- Texte -->
+      <div 
+        class="flex flex-col gap-4 sm:gap-6 fade-block relative rounded-3xl px-8 py-10
+               backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+               shadow-[0_0_40px_rgba(120,160,255,0.15)]"
+      >
+
+        <!-- Glow interne -->
+        <div 
+          class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                 bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+        ></div>
+
+        <h2 class="relative z-10 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+          Travaillons ensemble.
+        </h2>
+
+        <p class="relative z-10 text-gray-600 dark:text-gray-300 max-w-lg text-lg sm:text-xl leading-relaxed">
+          Dites‑nous ce que vous imaginez. Nous construirons la suite, ensemble.
         </p>
       </div>
-      <form action="#" method="POST" class="mt-3 flex flex-col gap-y-6">
-        <!-- Full name input -->
-        <div>
-          <label for="full-name" class="sr-only">Full name</label>
+
+      <!-- Formulaire -->
+      <form 
+        id="envsco-form"
+        class="fade-block mt-3 flex flex-col gap-y-6 relative rounded-3xl px-8 py-10
+               backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+               shadow-[0_0_40px_rgba(120,160,255,0.15)]"
+      >
+
+        <!-- Glow interne -->
+        <div 
+          class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                 bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+        ></div>
+
+        <!-- Honeypot anti-spam -->
+        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+
+        <!-- Nom complet -->
+        <div class="relative z-10">
           <input
             type="text"
             name="full-name"
-            id="full-name"
-            autocomplete="name"
-            class="hover:ring-primary-600 focus:ring-primary-600 dark:hover:ring-primary-400 dark:focus:ring-primary-400 bg-primary-50 dark:bg-primary-950 ring-primary-900/40 dark:ring-primary-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
-            placeholder="Full name"
+            required
+            placeholder="Nom complet"
+            class="bg-white/20 dark:bg-white/10 backdrop-blur-xl
+                   ring-1 ring-white/20 dark:ring-white/10
+                   hover:ring-blue-400/50 focus:ring-blue-500
+                   placeholder:text-gray-500 dark:placeholder:text-gray-400
+                   block w-full rounded-xl px-4 py-4 text-base text-gray-900 dark:text-gray-100
+                   transition-all focus:outline-none focus:ring-2"
           />
         </div>
 
-        <!-- Email input -->
-        <div>
-          <label for="email" class="sr-only">Email</label>
+        <!-- Email -->
+        <div class="relative z-10">
           <input
             type="email"
             name="email"
-            id="email"
-            autocomplete="email"
-            class="hover:ring-primary-600 focus:ring-primary-600 dark:hover:ring-primary-400 dark:focus:ring-primary-400 bg-primary-50 dark:bg-primary-950 ring-primary-900/40 dark:ring-primary-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
+            required
             placeholder="Email"
+            class="bg-white/20 dark:bg-white/10 backdrop-blur-xl
+                   ring-1 ring-white/20 dark:ring-white/10
+                   hover:ring-blue-400/50 focus:ring-blue-500
+                   placeholder:text-gray-500 dark:placeholder:text-gray-400
+                   block w-full rounded-xl px-4 py-4 text-base text-gray-900 dark:text-gray-100
+                   transition-all focus:outline-none focus:ring-2"
           />
         </div>
 
-        <!-- Message textarea -->
-        <div>
-          <label for="message" class="sr-only">Message</label>
+        <!-- Message -->
+        <div class="relative z-10">
           <textarea
             name="message"
-            id="message"
-            rows="3"
-            class="hover:ring-primary-600 focus:ring-primary-600 dark:hover:ring-primary-400 dark:focus:ring-primary-400 bg-primary-50 dark:bg-primary-950 ring-primary-900/40 dark:ring-primary-200/40 placeholder:text-primary-950/60 dark:placeholder:text-primary-200/60 block w-full appearance-none rounded-md border-0 px-4 py-4 text-base ring-1 transition focus:outline-none focus:ring-2"
-            placeholder="Message"></textarea>
+            rows="4"
+            required
+            placeholder="Votre message..."
+            class="bg-white/20 dark:bg-white/10 backdrop-blur-xl
+                   ring-1 ring-white/20 dark:ring-white/10
+                   hover:ring-blue-400/50 focus:ring-blue-500
+                   placeholder:text-gray-500 dark:placeholder:text-gray-400
+                   block w-full rounded-xl px-4 py-4 text-base text-gray-900 dark:text-gray-100
+                   transition-all focus:outline-none focus:ring-2"
+          ></textarea>
         </div>
 
-        <div>
-          <button
-            class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-            type="submit"
-          >
-            Submit
-          </button>
-        </div>
+        <!-- Messages -->
+        <p id="form-success"
+           class="relative z-10 hidden text-green-600 dark:text-green-400 text-sm opacity-0 transition-all duration-500">
+          Votre message a bien été envoyé. Merci !
+        </p>
+
+        <p id="form-error"
+           class="relative z-10 hidden text-red-600 dark:text-red-400 text-sm opacity-0 transition-all duration-500">
+          Une erreur est survenue. Veuillez réessayer.
+        </p>
+
+        <!-- Bouton -->
+        <button
+          id="submit-btn"
+          type="submit"
+          class="relative z-10 group bg-gradient-to-r from-blue-200 to-blue-300 hover:from-blue-300 hover:to-blue-400
+                 dark:from-blue-700 dark:to-blue-800 dark:hover:from-blue-800 dark:hover:to-blue-900
+                 inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 
+                 text-lg font-semibold text-black dark:text-white shadow-lg hover:shadow-xl 
+                 hover:shadow-blue-500/25 dark:hover:shadow-blue-400/25
+                 border border-blue-300/40 hover:border-blue-400/60
+                 dark:border-blue-600/20 dark:hover:border-blue-500/40
+                 transform hover:-translate-y-1 hover:scale-105 
+                 transition-all duration-300 ease-out"
+        >
+          <span id="btn-text">Envoyer</span>
+
+          <!-- Loader -->
+          <svg id="btn-loader" class="hidden animate-spin h-5 w-5 text-black dark:text-white" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 100 16v-4l-3 3 3 3v-4a8 8 0 01-8-8z">
+            </path>
+          </svg>
+        </button>
+
       </form>
+
     </div>
   </div>
 </section>
+
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-block {
+  opacity: 0;
+  animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.fade-block:nth-child(1) { animation-delay: 0.1s; }
+.fade-block:nth-child(2) { animation-delay: 0.3s; }
+</style>
+
+<script is:inline>
+document.getElementById("envsco-form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const btnText = document.getElementById("btn-text");
+  const btnLoader = document.getElementById("btn-loader");
+  const successMsg = document.getElementById("form-success");
+  const errorMsg = document.getElementById("form-error");
+
+  successMsg.classList.add("hidden");
+  errorMsg.classList.add("hidden");
+  successMsg.style.opacity = 0;
+  errorMsg.style.opacity = 0;
+
+  btnText.classList.add("hidden");
+  btnLoader.classList.remove("hidden");
+
+  try {
+    const response = await fetch("https://formspree.io/f/mpqzrdjg", {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    });
+
+    if (response.ok) {
+      form.reset();
+      successMsg.classList.remove("hidden");
+      setTimeout(() => successMsg.style.opacity = 1, 10);
+    } else {
+      errorMsg.classList.remove("hidden");
+      setTimeout(() => errorMsg.style.opacity = 1, 10);
+    }
+  } catch {
+    errorMsg.classList.remove("hidden");
+    setTimeout(() => errorMsg.style.opacity = 1, 10);
+  }
+
+  btnText.classList.remove("hidden");
+  btnLoader.classList.add("hidden");
+});
+</script>

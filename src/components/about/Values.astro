@@ -1,59 +1,137 @@
 ---
 const values = [
-  [
-    {
-      ref: '01',
-      name: 'Excellence',
-      description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-    },
-    {
-      ref: '02',
-      name: 'Innovation',
-      description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-    },
-  ],
-  [
-    {
-      ref: '03',
-      name: 'Teamwork',
-      description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-    },
-    {
-      ref: '04',
-      name: 'Respect',
-      description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-    },
-  ],
+  {
+    ref: '01',
+    name: 'Clarté',
+    description:
+      "Nous croyons qu’un outil scolaire doit disparaître derrière l’essentiel : l’apprentissage. Chaque interface est pensée pour être simple, lisible et évidente.",
+  },
+  {
+    ref: '02',
+    name: 'Humanité',
+    description:
+      "La technologie n’a de sens que si elle renforce les liens. ENVSCO place l’élève, le parent et l’enseignant au centre de chaque décision.",
+  },
+  {
+    ref: '03',
+    name: 'Précision',
+    description:
+      "Chaque fonctionnalité est conçue avec intention. Rien n’est ajouté au hasard. Tout doit servir, clarifier ou améliorer l’expérience scolaire.",
+  },
+  {
+    ref: '04',
+    name: 'Évolution',
+    description:
+      "ENVSCO est un projet vivant. Nous avançons par observation, test et amélioration continue, pour offrir une solution durable et pertinente.",
+  },
 ];
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-col gap-8 lg:gap-12">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Our Values</h2>
-      <div class="grid gap-8 lg:grid-cols-2">
-        {
-          values.map((column, index) => (
-            <div class:list={['space-y-8', index === 1 && 'lg:mt-16']}>
-              {column.map((value) => (
-                <div class="bg-primary-500/10 dark:bg-primary-400/10 flex flex-col gap-12 rounded-3xl px-6 py-8">
-                  <p class="text-sm">{value.ref}</p>
-                  <div class="flex flex-col gap-4">
-                    <h3 class="text-xl font-medium">{value.name}</h3>
-                    <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-                      {value.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ))
-        }
+<section 
+  class="py-24 sm:py-32 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
+
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-6xl lg:px-8">
+
+    <div class="flex flex-col gap-16">
+
+      <!-- En-tête -->
+      <div 
+        class="text-center max-w-2xl mx-auto space-y-6 fade-block relative rounded-3xl px-8 py-10
+               backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+               shadow-[0_0_40px_rgba(120,160,255,0.15)]"
+      >
+
+        <!-- Glow interne -->
+        <div 
+          class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                 bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+        ></div>
+
+        <div class="relative z-10 flex items-center justify-center gap-2">
+          <div class="w-10 h-0.5 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full"></div>
+          <span class="text-sm font-medium text-emerald-600 dark:text-emerald-400 tracking-wide">NOS ENGAGEMENTS</span>
+          <div class="w-10 h-0.5 bg-gradient-to-l from-emerald-500 to-emerald-400 rounded-full"></div>
+        </div>
+
+        <h2 class="relative z-10 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+          Ce qui guide ENVSCO.
+        </h2>
+
+        <p class="relative z-10 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+          Quatre principes simples. Quatre repères constants.  
+          Ils façonnent notre manière de penser, de concevoir et d’avancer.
+        </p>
       </div>
+
+      <!-- Grille des valeurs -->
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 fade-block">
+
+        {values.map((value) => (
+          <div 
+            class="group relative p-8 rounded-2xl backdrop-blur-xl
+                   bg-white/10 dark:bg-white/5 border border-white/10
+                   shadow-[0_0_30px_rgba(120,160,255,0.15)]
+                   hover:shadow-[0_0_45px_rgba(120,160,255,0.25)]
+                   transition-all duration-500 hover:scale-[1.03]"
+          >
+
+            <!-- Glow interne -->
+            <div 
+              class="absolute inset-0 rounded-2xl opacity-20 blur-xl pointer-events-none
+                     bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+            ></div>
+
+            <!-- Ref -->
+            <p class="relative z-10 text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-4">
+              {value.ref}
+            </p>
+
+            <!-- Titre -->
+            <h3 class="relative z-10 text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+              {value.name}
+            </h3>
+
+            <!-- Description -->
+            <p class="relative z-10 text-gray-600 dark:text-gray-300 leading-relaxed">
+              {value.description}
+            </p>
+
+            <!-- Ligne animée -->
+            <div 
+              class="relative z-10 w-12 h-0.5 bg-gradient-to-r from-emerald-500 to-emerald-400 mt-6 
+                     scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+            ></div>
+
+          </div>
+        ))}
+
+      </div>
+
     </div>
   </div>
 </section>
+
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-block {
+  opacity: 0;
+  animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.fade-block:nth-child(1) { animation-delay: 0.1s; }
+.fade-block:nth-child(2) { animation-delay: 0.3s; }
+.fade-block:nth-child(3) { animation-delay: 0.5s; }
+</style>

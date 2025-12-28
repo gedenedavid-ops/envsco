@@ -3,28 +3,87 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  description="Page not found. Please check the URL in the address bar and try again."
-  title="Not found · Stone"
+  title="Page introuvable · ENVSCO"
+  description="La page que vous recherchez n'existe pas ou a été déplacée."
 >
-  <section class="py-16 sm:py-20">
-    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-      <div class="flex flex-col items-start gap-8 sm:gap-10">
-        <div class="flex flex-col gap-4 sm:gap-6">
-          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
-            <div>404</div>
-            <div>Page not found</div>
+  <section 
+    class="py-24 sm:py-32 relative overflow-hidden"
+    x-data="{ lightX: 50, lightY: 50 }"
+    @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+  >
+
+    <!-- Halo Vision Pro -->
+    <div 
+      class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+      :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+    ></div>
+
+    <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+
+      <div class="flex flex-col items-center text-center gap-10 fade-block">
+
+        <!-- Bloc VisionOS -->
+        <div 
+          class="relative rounded-3xl px-12 py-10
+                 backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+                 shadow-[0_0_45px_rgba(120,160,255,0.15)]"
+        >
+
+          <!-- Glow interne -->
+          <div 
+            class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                   bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+          ></div>
+
+          <h1 class="relative z-10 text-7xl font-semibold text-blue-600 dark:text-blue-400 tracking-tight">
+            404
           </h1>
-          <p class="text-primary-950/70 dark:text-primary-200/70 text-lg sm:text-xl">
-            Please check the URL in the address bar and try again.
+        </div>
+
+        <!-- Message -->
+        <div class="flex flex-col gap-4 max-w-xl">
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            Page introuvable
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            La page que vous cherchez n’existe pas ou a été déplacée.  
+            Revenez à l’accueil pour continuer votre navigation.
           </p>
         </div>
+
+        <!-- Bouton retour -->
         <a
           href="/"
-          class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+          class="group bg-gradient-to-r from-blue-200 to-blue-300 hover:from-blue-300 hover:to-blue-400
+                 dark:from-blue-700 dark:to-blue-800 dark:hover:from-blue-800 dark:hover:to-blue-900
+                 inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 
+                 text-lg font-semibold text-black dark:text-white shadow-xl hover:shadow-2xl 
+                 hover:shadow-blue-500/25 dark:hover:shadow-blue-400/25
+                 border border-blue-300/40 hover:border-blue-400/60
+                 dark:border-blue-600/20 dark:hover:border-blue-500/40
+                 transform hover:-translate-y-1 hover:scale-105 
+                 transition-all duration-300 ease-out"
         >
-          Go back home
+          Retour à l’accueil
+          <svg aria-hidden="true" class="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
         </a>
+
       </div>
+
     </div>
   </section>
 </Layout>
+
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-block {
+  opacity: 0;
+  animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+</style>

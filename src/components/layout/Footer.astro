@@ -1,134 +1,90 @@
 ---
 const bottomLinks = [
   {
-    header: 'Social',
+    header: 'ENVSCO',
     links: [
-      {
-        name: 'Github',
-        href: 'https://github.com/',
-        isExternal: true,
-      },
-      {
-        name: 'Twitter',
-        href: 'https://twitter.com/',
-        isExternal: true,
-      },
-      {
-        name: 'Instagram',
-        href: 'https://instagram.com/',
-        isExternal: true,
-      },
-      {
-        name: 'Facebook',
-        href: 'https://facebook.com/',
-        isExternal: true,
-      },
+      { name: 'Accueil', href: '/', isExternal: false },
+      { name: 'À propos', href: '/about', isExternal: false },
+      { name: 'Tarifs', href: '/pricing', isExternal: false },
+      { name: 'Contact', href: '/contact', isExternal: false },
     ],
   },
   {
-    header: 'Company',
+    header: 'Légal',
     links: [
-      {
-        name: 'Home',
-        href: '/',
-        isExternal: false,
-      },
-      {
-        name: 'About',
-        href: '/about',
-        isExternal: false,
-      },
-      {
-        name: 'Pricing',
-        href: '/pricing',
-        isExternal: false,
-      },
-      {
-        name: 'Contact',
-        href: '/contact',
-        isExternal: false,
-      },
-    ],
-  },
-  {
-    header: 'Legal',
-    links: [
-      {
-        name: 'Privacy',
-        href: '/privacy',
-        isExternal: false,
-      },
-      {
-        name: '404',
-        href: '/404',
-        isExternal: false,
-      },
-      {
-        name: 'Styleguide',
-        href: '/styleguide',
-        isExternal: false,
-      },
+      { name: 'Confidentialité', href: '/privacy', isExternal: false },
+      { name: 'Styleguide', href: '/styleguide', isExternal: false },
     ],
   },
 ];
 ---
 
-<footer
-  class="bg-primary-500/10 dark:bg-primary-400/10 mt-16 py-16 lg:mt-20 lg:py-20"
+<footer 
+  class="mt-24 py-20 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
   aria-labelledby="footer-heading"
 >
-  <h2 id="footer-heading" class="sr-only">Footer</h2>
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-col justify-between gap-12 sm:gap-16 lg:flex-row">
-      <div class="flex max-w-sm flex-col items-start gap-6 sm:gap-8">
-        <img
-          class="h-8 w-auto"
-          width="65"
-          height="40"
-          :src="$store.theme.isDark ? '/assets/logo-inverted.svg' : '/assets/logo.svg'"
-          alt="Stone"
-        />
-        <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
-          Stone is a premium Astro theme specially designed for Business, Marketing, SaaS and
-          Startup websites.
+  <h2 id="footer-heading" class="sr-only">Pied de page</h2>
+
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <!-- Verre dépoli + profondeur -->
+  <div 
+    class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 rounded-3xl
+           backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+           shadow-[0_0_40px_rgba(120,160,255,0.15)]"
+  >
+
+    <!-- Glow interne VisionOS -->
+    <div 
+      class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+             bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+    ></div>
+
+    <div class="relative z-10 flex flex-col lg:flex-row justify-between gap-16 py-16">
+
+      <!-- Logo + description -->
+      <div class="flex flex-col gap-4 max-w-sm">
+        <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+          ENVSCO modernise l’expérience scolaire avec une plateforme intuitive, élégante et pensée pour les écoles d’aujourd’hui.
         </p>
-        <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">© 2023 Stone</p>
+
+        <p class="text-gray-500 dark:text-gray-400 text-sm">
+          © {new Date().getFullYear()} ENVSCO — Tous droits réservés.
+        </p>
       </div>
 
-      <!-- Bottom links -->
-      <div class="grid max-w-xl flex-1 grid-cols-1 gap-8 sm:grid-cols-3">
-        {
-          bottomLinks.map((group) => (
-            <div class="flex flex-col gap-4">
-              <p class="text-base font-medium">{group.header}</p>
-              <ul role="list" class="flex flex-col gap-3">
-                {group.links.map((link) => (
-                  <li>
-                    <a
-                      href={link.href}
-                      class="focus-visible:outline-primary-950 dark:focus-visible:outline-primary-200 inline-flex items-center gap-1 rounded-md text-base hover:underline focus-visible:outline focus-visible:outline-2"
-                      target={link.isExternal ? '_blank' : undefined}
-                      rel={link.isExternal ? 'noopener' : undefined}
-                    >
-                      {link.name}
-                      {link.isExternal && (
-                        <svg
-                          class="h-4 w-4"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path d="M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z" />
-                        </svg>
-                      )}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
+      <!-- Liens -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 flex-1">
+
+        {bottomLinks.map((group) => (
+          <div class="flex flex-col gap-4">
+            <p class="text-base font-semibold text-gray-900 dark:text-white">
+              {group.header}
+            </p>
+
+            <ul class="flex flex-col gap-3">
+              {group.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="inline-flex items-center gap-1 text-gray-600 dark:text-gray-300
+                           hover:text-blue-600 dark:hover:text-blue-400
+                           transition-colors text-base"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
       </div>
     </div>
   </div>

@@ -1,7 +1,8 @@
 ---
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-500.css';
-import { ViewTransitions } from 'astro:transitions';
+import 'leaflet/dist/leaflet.css';
+
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
 
@@ -14,32 +15,27 @@ const { description, title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" x-cloak x-data :class="{ 'dark': $store.theme.isDark }">
+<html lang="fr" x-data :class="{ dark: $store.theme.isDark }">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="color-scheme" content="light dark" />
+
     <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
-  </head>
-  <body
-    class="bg-primary-50 text-primary-950 dark:bg-primary-950 dark:text-primary-200 antialiased transition"
-  >
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    <style is:global>
-      [x-cloak] {
-        display: none !important;
+
+    <!-- Prevent flash -->
+    <script>
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
       }
-    </style>
+    </script>
+
+    <!-- Alpine -->
     <script>
       import Alpine from 'alpinejs';
       import collapse from '@alpinejs/collapse';
@@ -47,19 +43,14 @@ const { description, title } = Astro.props;
       Alpine.plugin(collapse);
 
       Alpine.store('theme', {
-        init() {
-          this.isDark = (() => {
-            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-              return localStorage.getItem('theme') === 'dark';
-            }
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-              return true;
-            }
-            return false;
-          })();
-        },
-
         isDark: false,
+
+        init() {
+          const saved = localStorage.getItem('theme');
+          this.isDark = saved
+            ? saved === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        },
 
         toggle() {
           this.isDark = !this.isDark;
@@ -70,5 +61,24 @@ const { description, title } = Astro.props;
       window.Alpine = Alpine;
       Alpine.start();
     </script>
+
+    <style is:global>
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
+  </head>
+
+  <body
+    x-cloak
+    class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-200 antialiased transition-colors duration-500"
+  >
+    <Header />
+
+    <main class="min-h-[70vh]">
+      <slot />
+    </main>
+
+    <Footer />
   </body>
 </html>

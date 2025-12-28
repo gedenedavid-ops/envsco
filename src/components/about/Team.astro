@@ -1,42 +1,227 @@
----
-const team = [
-  {
-    name: 'Floyd Lowe',
-    image: '/assets/team-1.webp',
-    job: 'Senior Designer',
-  },
-  {
-    name: 'Emma Dorsey',
-    image: '/assets/team-2.webp',
-    job: 'Principal Designer',
-  },
-  {
-    name: 'Emily Mitchell',
-    image: '/assets/team-3.webp',
-    job: 'Senior Developer',
-  },
-];
----
+<section 
+  class="py-24 sm:py-32 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="sm:space-8 space-y-12">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Meet our team</h2>
-      <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          team.map((item) => (
-            <li class="border-primary-900/10 dark:border-primary-300/10 rounded-3xl border px-6 py-8">
-              <div class="space-y-6">
-                <img class="mx-auto h-auto w-16 rounded-full" src={item.image} alt={item.name} />
-                <div class="text-center">
-                  <h3 class="text-lg font-medium">{item.name}</h3>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">{item.job}</p>
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+
+    <div class="flex flex-col gap-16 lg:gap-20">
+
+      <!-- En-tête minimaliste Apple -->
+      <div 
+        class="fade-block flex max-w-2xl flex-col items-start gap-6 
+               relative rounded-3xl px-8 py-10
+               backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+               shadow-[0_0_40px_rgba(120,160,255,0.15)]"
+      >
+
+        <!-- Glow interne -->
+        <div 
+          class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                 bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+        ></div>
+
+        <div class="relative z-10 flex items-center gap-2 mb-2">
+          <div class="w-8 h-0.5 bg-gradient-to-r from-blue-500 to-blue-400 rounded-full"></div>
+          <span class="text-sm font-medium text-blue-600 dark:text-blue-400 tracking-wide">NOTRE APPROCHE</span>
+          <div class="w-8 h-0.5 bg-gradient-to-l from-blue-500 to-blue-400 rounded-full"></div>
+        </div>
+
+        <h2 class="relative z-10 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+          Une pensée, avant un produit.
+        </h2>
+
+        <p class="relative z-10 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+          Chez ENVSCO, nous croyons que les meilleures solutions naissent non pas du code, 
+          mais de la compréhension humaine.
+        </p>
+      </div>
+
+      <!-- Histoire principale -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+        <!-- Colonne texte -->
+        <div 
+          class="fade-block space-y-8 relative rounded-3xl px-8 py-10
+                 backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+                 shadow-[0_0_40px_rgba(120,160,255,0.15)]"
+        >
+
+          <!-- Glow interne -->
+          <div 
+            class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                   bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+          ></div>
+
+          <div class="relative z-10 space-y-6">
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">
+              Observer avant de construire.
+            </h3>
+
+            <div class="space-y-4">
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                ENVSCO est né d'une observation simple mais profonde : l'école est d'abord une communauté humaine, 
+                avant d'être une institution. En tant qu'étudiant en sociologie, j'ai passé des années à comprendre 
+                comment les interactions, l'organisation et les outils façonnent l'expérience éducative.
+              </p>
+
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                Cette perspective unique nous guide aujourd'hui. Nous ne créons pas une technologie pour l'école. 
+                Nous écoutons l'école pour créer la technologie dont elle a besoin.
+              </p>
+            </div>
+          </div>
+
+          <!-- Phase actuelle -->
+          <div class="relative z-10 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <div class="inline-flex items-center gap-3 mb-4">
+              <div class="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div>
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">PHASE ACTUELLE</span>
+            </div>
+
+            <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+              Conception active, déploiement réfléchi.
+            </h4>
+
+            <p class="text-gray-600 dark:text-gray-300">
+              Nous sommes en période de test approfondi. Chaque module est pensé, prototypé, 
+              puis soumis à des retours informels d'élèves, de parents et d'enseignants. 
+              Cette rigueur nous assure d'arriver dans les écoles avec une solution déjà éprouvée.
+            </p>
+          </div>
+        </div>
+
+        <!-- Colonne visuelle -->
+        <div class="fade-block space-y-8">
+
+          <!-- Carte Apple VisionOS -->
+          <div 
+            class="relative p-6 rounded-2xl backdrop-blur-xl bg-white/10 dark:bg-white/5 
+                   border border-white/10 shadow-[0_0_30px_rgba(120,160,255,0.15)]"
+          >
+
+            <!-- Glow interne -->
+            <div 
+              class="absolute inset-0 rounded-2xl opacity-20 blur-xl pointer-events-none
+                     bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+            ></div>
+
+            <div class="relative z-10 flex items-start gap-4 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-600/10 flex items-center justify-center">
+                <svg aria-hidden="true" class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Notre conviction</h4>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">
+                  La simplicité est la sophistication ultime. Chaque fonctionnalité doit prouver sa nécessité.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="fade-block space-y-6">
+            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Notre parcours</h4>
+
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full border-2 border-blue-500 flex items-center justify-center mt-0.5">
+                  <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                </div>
+                <div>
+                  <p class="font-medium text-gray-900 dark:text-white">Observation terrain</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Comprendre l'écosystème scolaire</p>
                 </div>
               </div>
-            </li>
-          ))
-        }
-      </ul>
+
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full border-2 border-blue-500 flex items-center justify-center mt-0.5">
+                  <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                </div>
+                <div>
+                  <p class="font-medium text-gray-900 dark:text-white">Tests informels</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Retours d'utilisateurs réels</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full border-2 border-blue-500/50 flex items-center justify-center mt-0.5">
+                  <div class="w-2 h-2 rounded-full bg-blue-500/50"></div>
+                </div>
+                <div>
+                  <p class="font-medium text-gray-900 dark:text-white/70">Premières écoles partenaires</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Co-construction à venir</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Citation -->
+          <div class="fade-block pt-6 border-t border-gray-200 dark:border-gray-800">
+            <p class="text-gray-600 dark:text-gray-400 italic">
+              "Nous ne transformons pas l'école par la technologie. 
+              Nous utilisons la technologie pour révéler ce que l'école peut être."
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">— Fondateur, ENVSCO</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="fade-block pt-8 border-t border-gray-200 dark:border-gray-800">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <p class="text-gray-700 dark:text-gray-300 font-medium">Intéressé par cette approche ?</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Discutons de comment nous pourrions travailler ensemble.</p>
+          </div>
+
+          <a 
+            href="#contact"
+            class="group bg-gradient-to-r from-emerald-200 to-emerald-300 hover:from-emerald-300 hover:to-emerald-400
+                   dark:from-emerald-700 dark:to-emerald-800 dark:hover:from-emerald-800 dark:hover:to-emerald-900
+                   inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-semibold text-black dark:text-white
+                   shadow-lg hover:shadow-xl hover:shadow-emerald-500/25 dark:hover:shadow-emerald-400/25
+                   border border-emerald-300/40 hover:border-emerald-400/60
+                   dark:border-emerald-600/20 dark:hover:border-emerald-500/40
+                   transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-out"
+          >
+            <svg aria-hidden="true" class="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            Échanger
+            <svg aria-hidden="true" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-block {
+  opacity: 0;
+  animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.fade-block:nth-child(1) { animation-delay: 0.1s; }
+.fade-block:nth-child(2) { animation-delay: 0.3s; }
+.fade-block:nth-child(3) { animation-delay: 0.5s; }
+.fade-block:nth-child(4) { animation-delay: 0.7s; }
+</style>

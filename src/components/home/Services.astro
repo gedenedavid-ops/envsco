@@ -2,44 +2,84 @@
 const services = [
   {
     step: '01',
-    name: 'Design',
+    name: 'Notre vision',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      "Nous croyons en une éducation plus simple, plus connectée et plus efficace. ENVSCO pose les bases d'un environnement scolaire numérique moderne, centré sur l'humain.",
   },
   {
     step: '02',
-    name: 'Develop',
+    name: 'Une construction progressive',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      "Nous avançons étape par étape. Le carnet digital n'est que le début : notre objectif est de connecter élèves, parents, enseignants et établissements autour d’un même espace.",
   },
   {
     step: '03',
-    name: 'Maintain',
+    name: 'Co‑création avec les écoles',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      "Nous recherchons des écoles pilotes pour construire ENVSCO avec celles et ceux qui vivent l’éducation au quotidien. Ensemble, nous façonnons l’avenir scolaire.",
   },
 ];
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+<section 
+  class="py-16 sm:py-20 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
+
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+
     <div class="flex flex-col gap-12 sm:gap-16">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Services</h2>
+
+      <!-- Titre -->
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl text-gray-900 dark:text-white">
+        Notre approche
+      </h2>
+
+      <!-- Cartes VisionOS -->
       <div class="grid gap-8 lg:grid-cols-3">
-        {
-          services.map((service) => (
-            <div class="bg-primary-500/10 dark:bg-primary-400/10 flex flex-col gap-12 rounded-3xl px-6 py-8">
-              <p class="text-sm">{service.step}</p>
-              <div class="flex flex-col gap-4">
-                <h3 class="text-xl font-medium">{service.name}</h3>
-                <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-                  {service.description}
-                </p>
-              </div>
+
+        {services.map((service) => (
+          <div 
+            class="relative flex flex-col gap-8 rounded-3xl px-6 py-8 backdrop-blur-xl
+                   bg-white/10 dark:bg-white/5 border border-white/10
+                   shadow-[0_0_40px_rgba(120,160,255,0.15)]
+                   transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_55px_rgba(120,160,255,0.25)]"
+          >
+
+            <!-- Glow interne VisionOS -->
+            <div 
+              class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                     bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+            ></div>
+
+            <!-- Numéro -->
+            <p class="relative z-10 text-sm text-neutral-500 dark:text-neutral-400 font-medium">
+              {service.step}
+            </p>
+
+            <!-- Contenu -->
+            <div class="relative z-10 flex flex-col gap-4">
+              <h3 class="text-xl font-medium text-neutral-900 dark:text-white">
+                {service.name}
+              </h3>
+
+              <p class="text-neutral-700 dark:text-neutral-300 text-base sm:text-lg leading-relaxed">
+                {service.description}
+              </p>
             </div>
-          ))
-        }
+
+          </div>
+        ))}
+
       </div>
+
     </div>
   </div>
 </section>

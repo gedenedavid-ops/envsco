@@ -1,72 +1,101 @@
 ---
 const stats = [
-  {
-    name: 'Years',
-    value: '9',
-  },
-  {
-    name: 'Experts',
-    value: '15',
-  },
-  {
-    name: 'Projects',
-    value: '122',
-  },
-  {
-    name: 'Awards',
-    value: "'9'",
-  },
+  { name: 'Phase', value: 'Pilote' },
+  { name: 'Écoles impliquées', value: 'Sélectionnées' },
+  { name: 'Objectif', value: 'Modernisation' },
+  { name: 'Vision', value: 'Long terme' },
 ];
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
+<section 
+  class="py-20 sm:py-28 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
+
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+
+    <div class="grid gap-20 lg:grid-cols-2 lg:gap-28">
+
+      <!-- Image -->
       <img
-        class="mx-auto h-auto w-full max-w-xl rounded-3xl"
+        class="mx-auto h-auto w-full max-w-xl rounded-3xl shadow-[0_0_40px_rgba(120,160,255,0.15)]"
         width="576"
         height="864"
-        src="/assets/about.webp"
-        alt="Our experts working together"
+        src="/assets/about.png"
+        alt="Équipe travaillant sur ENVSCO"
       />
-      <div class="flex flex-col gap-10">
+
+      <!-- Texte + Stats -->
+      <div class="flex flex-col gap-14">
+
         <!-- Mission description -->
-        <div class="space-y-8 sm:space-y-12">
-          <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Our mission</h2>
-          <div class="space-y-6">
-            <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-              Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed
-              consectetur neque tristique pellentesque. Blandit amet, sed aenean erat arcu morbi.
-              Cursus faucibus nunc nisl netus morbi vel porttitor vitae ut. Amet vitae fames
-              senectus vitae.
+        <div class="relative space-y-10 sm:space-y-14">
+
+          <!-- Glow interne VisionOS -->
+          <div 
+            class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                   bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+          ></div>
+
+          <h2 class="relative z-10 text-3xl font-medium tracking-tight sm:text-4xl text-gray-900 dark:text-white">
+            Notre mission
+          </h2>
+
+          <div class="relative z-10 space-y-6">
+            <p class="text-neutral-700 dark:text-neutral-300 text-base sm:text-lg leading-relaxed">
+              ENVSCO a pour mission de moderniser l’environnement scolaire en offrant une
+              plateforme simple, élégante et accessible, pensée pour faciliter la communication
+              entre élèves, parents, enseignants et établissements.
             </p>
-            <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-              Sollicitudin tristique eros erat odio sed vitae, consequat turpis elementum. Lorem
-              nibh vel, eget pretium arcu vitae. Eros eu viverra donec ut volutpat donec laoreet
-              quam urna. Sollicitudin tristique eros erat odio sed vitae, consequat turpis
-              elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu viverra donec ut volutpat
-              donec laoreet quam urna.
+
+            <p class="text-neutral-700 dark:text-neutral-300 text-base sm:text-lg leading-relaxed">
+              Nous construisons une solution progressive : un carnet digital clair, des outils
+              de suivi, des modules de communication, et une expérience fluide adaptée aux besoins
+              réels des écoles. Chaque fonctionnalité est conçue avec soin, en collaboration avec
+              les établissements pilotes.
             </p>
-            <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-              Rhoncus nisl, libero egestas diam fermentum dui. At quis tincidunt vel ultricies.
-              Vulputate aliquet velit faucibus semper. Pellentesque in venenatis vestibulum
-              consectetur nibh id. In id ut tempus egestas. Enim sit aliquam nec, a. Morbi enim
-              fermentum lacus in. Viverra.
+
+            <p class="text-neutral-700 dark:text-neutral-300 text-base sm:text-lg leading-relaxed">
+              Notre ambition est simple : rendre l’école plus organisée, plus connectée et plus
+              agréable pour tous. ENVSCO évolue avec les retours du terrain, dans une démarche
+              responsable, humaine et durable.
             </p>
           </div>
         </div>
 
-        <!-- Stats -->
+        <!-- Stats VisionOS -->
         <dl class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {
-            stats.map((stat) => (
-              <div class="border-primary-900/10 dark:border-primary-300/10 rounded-3xl border p-6">
-                <dt class="text-base">{stat.name}</dt>
-                <dd class="text-3xl font-medium tracking-tight">{stat.value}</dd>
-              </div>
-            ))
-          }
+          {stats.map((stat) => (
+            <div 
+              class="relative rounded-3xl p-6 backdrop-blur-xl
+                     bg-white/10 dark:bg-white/5 border border-white/10
+                     shadow-[0_0_30px_rgba(120,160,255,0.15)]
+                     transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_45px_rgba(120,160,255,0.25)]"
+            >
+
+              <!-- Glow interne -->
+              <div 
+                class="absolute inset-0 rounded-3xl opacity-20 blur-xl pointer-events-none
+                       bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+              ></div>
+
+              <dt class="relative z-10 text-base text-neutral-600 dark:text-neutral-400">
+                {stat.name}
+              </dt>
+              <dd class="relative z-10 text-3xl font-medium tracking-tight text-gray-900 dark:text-white">
+                {stat.value}
+              </dd>
+            </div>
+          ))}
         </dl>
+
       </div>
     </div>
   </div>

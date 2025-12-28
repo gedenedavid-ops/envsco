@@ -2,79 +2,118 @@
 const questions = [
   {
     id: 'faq-1',
-    title: 'How do I know which pricing plan is right for me?',
+    title: "Comment devenir une école pilote ?",
     answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
+      "Les écoles pilotes bénéficient d’un accès complet aux fonctionnalités en développement et participent directement à la co‑construction d’ENVSCO. Il suffit de nous contacter via le formulaire pour rejoindre le programme.",
   },
   {
     id: 'faq-2',
-    title: 'How can I upgrade, downgrade, or cancel my plan?',
+    title: "L’accès est-il gratuit pendant la phase pilote ?",
     answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
+      "Oui. Les établissements pilotes utilisent ENVSCO gratuitement durant toute la période de test, sans engagement.",
   },
   {
     id: 'faq-3',
-    title: "What does 'lifetime access' mean exactly?",
+    title: "Quelles fonctionnalités sont disponibles aujourd’hui ?",
     answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
+      "Nous avançons étape par étape. Le carnet digital est la première brique, suivie de modules de communication, de suivi scolaire et d’administration.",
   },
   {
     id: 'faq-4',
-    title: "What does 'free updates' mean exactly?",
+    title: "Quand la version complète sera-t-elle disponible ?",
     answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
+      "La version publique sera lancée après la phase pilote, une fois les retours des établissements intégrés et validés.",
   },
   {
     id: 'faq-5',
-    title: 'Do you offer a free trial?',
+    title: "Comment sont gérées les données scolaires ?",
     answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
+      "Nous adoptons une approche responsable : sécurité moderne, confidentialité stricte et stockage conforme aux bonnes pratiques du secteur éducatif.",
   },
   {
     id: 'faq-6',
-    title: 'How can I request support?',
+    title: "Comment obtenir de l’aide ou du support ?",
     answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.',
+      "Les écoles pilotes bénéficient d’un accompagnement direct. Vous pouvez nous contacter à tout moment via la page dédiée.",
   },
 ];
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
-      <div>
-        <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Frequently asked questions</h2>
+<section 
+  class="py-20 sm:py-28 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
+
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+
+    <div class="grid gap-12 lg:grid-cols-3 lg:gap-16">
+
+      <!-- Titre -->
+      <div 
+        class="fade-block relative rounded-3xl px-8 py-10
+               backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+               shadow-[0_0_40px_rgba(120,160,255,0.15)]"
+      >
+        <!-- Glow interne -->
+        <div 
+          class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                 bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+        ></div>
+
+        <h2 class="relative z-10 text-3xl font-medium tracking-tight sm:text-4xl text-gray-900 dark:text-white">
+          Questions fréquentes
+        </h2>
       </div>
-      <div class="lg:col-span-2">
+
+      <!-- FAQ -->
+      <div class="lg:col-span-2 fade-block">
         <dl
-          class="-mt-3"
+          class="-mt-3 space-y-4"
           x-data="{ selected: null, toggle(value) { this.selected = this.selected === value ? null : value } }"
         >
           {
             questions.map((question, index) => (
               <div
-                class="rounded-3xl px-4 transition"
+                class="relative rounded-3xl px-6 py-2 transition-all duration-500
+                       backdrop-blur-xl bg-white/5 dark:bg-white/5 border border-white/10
+                       shadow-[0_0_20px_rgba(120,160,255,0.10)]
+                       hover:shadow-[0_0_35px_rgba(120,160,255,0.20)]"
                 x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected }, get isNextOpen() { return (this.id + 1) === this.selected } }`}
-                x-bind:class="{ 'bg-primary-500/10 dark:bg-primary-400/10': isOpen }"
               >
+
+                <!-- Glow interne -->
+                <div 
+                  class="absolute inset-0 rounded-3xl opacity-10 blur-xl pointer-events-none
+                         bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+                ></div>
+
                 <dt
-                  class="border-b text-lg transition"
-                  x-cloak
-                  x-bind:class="{ 'border-transparent': isOpen || isNextOpen, 'border-primary-900/10 dark:border-primary-300/10': !(isOpen || isNextOpen) }"
+                  class="relative z-10 border-b text-lg transition"
+                  x-bind:class="{ 
+                    'border-transparent': isOpen || isNextOpen, 
+                    'border-white/10': !(isOpen || isNextOpen) 
+                  }"
                 >
                   <button
                     type="button"
                     class="group block w-full py-6 text-left transition focus-visible:outline-none"
                     aria-controls={question.id}
                     x-on:click="toggle(id)"
-                    aria-expanded="false"
                     x-bind:aria-expanded="isOpen.toString()"
                   >
-                    <div class="group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
-                      <span class="font-medium">{question.title}</span>
+                    <div class="flex items-center justify-between rounded-3xl">
+                      <span class="font-medium text-gray-900 dark:text-white">{question.title}</span>
+
                       <span class="ml-6 flex h-7 items-center">
                         <svg
-                          class="text-primary-600 dark:text-primary-400 h-6 w-6 rotate-0 transform transition duration-200 ease-in-out"
+                          class="h-6 w-6 text-emerald-600 dark:text-emerald-400 transform transition duration-300 ease-in-out"
                           x-bind:class="{ '-rotate-180': isOpen, 'rotate-0': !isOpen }"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
@@ -87,16 +126,24 @@ const questions = [
                     </div>
                   </button>
                 </dt>
-                <dd class="pb-6 pr-6" id={question.id} x-show="isOpen" x-cloak x-collapse>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
+
+                <dd 
+                  class="relative z-10 pb-6 pr-2"
+                  id={question.id}
+                  x-show="isOpen"
+                  x-collapse
+                >
+                  <p class="text-neutral-700 dark:text-neutral-300 text-base leading-relaxed">
                     {question.answer}
                   </p>
                 </dd>
+
               </div>
             ))
           }
         </dl>
       </div>
+
     </div>
   </div>
 </section>

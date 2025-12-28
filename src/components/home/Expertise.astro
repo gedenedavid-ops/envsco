@@ -1,100 +1,138 @@
 ---
 const features = [
   {
-    id: 'expertise-1',
-    name: 'Digital Experience Platforms',
+    id: 'engagement-1',
+    name: 'Simplicité avant tout',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      "Chaque fonctionnalité d’ENVSCO est pensée pour alléger le quotidien scolaire, pas pour l’alourdir. Nous privilégions une expérience claire, intuitive et accessible.",
   },
   {
-    id: 'expertise-2',
-    name: 'Web & Mobile Development',
+    id: 'engagement-2',
+    name: 'Communication fluide',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      "Nous voulons connecter élèves, parents, enseignants et administration autour d’un même espace, pour réduire les pertes d’information et améliorer le suivi scolaire.",
   },
   {
-    id: 'expertise-3',
-    name: 'Serverless Computing Platforms',
+    id: 'engagement-3',
+    name: 'Sécurité et confidentialité',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      "Les données scolaires sont sensibles. ENVSCO adopte une approche responsable, avec des standards modernes de protection et de confidentialité.",
   },
   {
-    id: 'expertise-4',
-    name: 'Build & Test Automation Tools',
+    id: 'engagement-4',
+    name: 'Accessibilité pour tous',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      "L’éducation doit être inclusive. Nous construisons une plateforme utilisable par tous, quels que soient les appareils, les compétences ou les contraintes.",
   },
   {
-    id: 'expertise-5',
-    name: 'Artificial Intelligence',
+    id: 'engagement-5',
+    name: 'Évolution progressive',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      "Le carnet digital n’est que le début. ENVSCO se construit étape par étape, en ajoutant des modules réellement utiles et validés par le terrain.",
   },
   {
-    id: 'expertise-6',
-    name: 'Full project support',
+    id: 'engagement-6',
+    name: 'Co‑création avec les écoles',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      "Nous travaillons main dans la main avec nos écoles pilotes pour bâtir un environnement scolaire numérique adapté aux réalités du terrain.",
   },
 ];
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+<section 
+  class="py-16 sm:py-20 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
+
+  <!-- 🌟 Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-50 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.35), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
-      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Expertise</h2>
+      
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">
+        Nos engagements
+      </h2>
+
       <div class="lg:col-span-2">
         <dl
           class="-mt-3"
-          x-data="{ selected: null, toggle(value) { this.selected = this.selected === value ? null : value } }"
+          x-data="{ selected: null, toggle(v){ this.selected = this.selected === v ? null : v } }"
         >
-          {
-            features.map((feature, index) => (
-              <div
-                class="rounded-3xl px-4 transition"
-                x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected }, get isNextOpen() { return (this.id + 1) === this.selected } }`}
-                x-bind:class="{ 'bg-primary-500/10 dark:bg-primary-400/10': isOpen }"
+
+          {features.map((feature, index) => (
+            <div
+              x-data={`{ id: ${index}, get isOpen(){ return this.id === this.selected } }`}
+              class="relative rounded-3xl px-5 py-2 transition-all duration-500 backdrop-blur-xl border border-white/10"
+              x-bind:class="{
+                'bg-white/10 dark:bg-white/5 shadow-[0_0_40px_rgba(120,160,255,0.25)] scale-[1.02]': isOpen,
+                'bg-white/5 dark:bg-white/0': !isOpen
+              }"
+            >
+
+              <!-- Gradient Apple subtil -->
+              <div 
+                class="absolute inset-0 rounded-3xl opacity-0 transition-all duration-500 pointer-events-none"
+                x-bind:class="{ 'opacity-100 bg-gradient-to-br from-white/20 via-white/5 to-transparent': isOpen }"
+              ></div>
+
+              <!-- Glow interne VisionOS -->
+              <div 
+                class="absolute inset-0 rounded-3xl opacity-0 blur-xl transition-all duration-700 pointer-events-none"
+                x-bind:class="{ 'opacity-40 bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.35),transparent_70%)]': isOpen }"
+              ></div>
+
+              <dt
+                class="border-b text-lg transition-all relative z-10"
+                x-bind:class="{ 
+                  'border-transparent': isOpen, 
+                  'border-neutral-300 dark:border-neutral-700': !isOpen 
+                }"
               >
-                <dt
-                  class="border-b text-lg transition"
-                  x-cloak
-                  x-bind:class="{ 'border-transparent': isOpen || isNextOpen, 'border-primary-900/10 dark:border-primary-300/10': !(isOpen || isNextOpen) }"
+                <button
+                  type="button"
+                  class="group block w-full py-6 text-left transition"
+                  x-on:click="toggle(id)"
+                  :aria-expanded="isOpen.toString()"
                 >
-                  <button
-                    type="button"
-                    class="group block w-full py-6 text-left transition focus-visible:outline-none"
-                    aria-controls={feature.id}
-                    x-on:click="toggle(id)"
-                    aria-expanded="false"
-                    x-bind:aria-expanded="isOpen.toString()"
-                  >
-                    <div class="group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
-                      <span class="font-medium">{feature.name}</span>
-                      <span class="ml-6 flex h-7 items-center">
-                        <svg
-                          class="text-primary-600 dark:text-primary-400 h-6 w-6 rotate-0 transform transition duration-200 ease-in-out"
-                          x-bind:class="{ '-rotate-180': isOpen, 'rotate-0': !isOpen }"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" />
-                        </svg>
-                      </span>
-                    </div>
-                  </button>
-                </dt>
-                <dd class="pb-6 pr-6" id={feature.id} x-show="isOpen" x-cloak x-collapse>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
-                    {feature.description}
-                  </p>
-                </dd>
-              </div>
-            ))
-          }
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium">{feature.name}</span>
+
+                    <svg
+                      class="h-6 w-6 text-black dark:text-white transform transition duration-300"
+                      x-bind:class="{ '-rotate-180': isOpen }"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" />
+                    </svg>
+                  </div>
+                </button>
+              </dt>
+
+              <!-- Contenu -->
+              <dd 
+                class="pb-6 pr-6 relative z-10"
+                x-show="isOpen"
+                x-collapse
+                x-cloak
+              >
+                <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                  {feature.description}
+                </p>
+              </dd>
+
+            </div>
+          ))}
+
         </dl>
       </div>
+
     </div>
   </div>
 </section>

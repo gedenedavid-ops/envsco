@@ -1,65 +1,137 @@
-<section class="py-16 sm:py-20">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <dl class="grid gap-6 lg:grid-cols-3">
-      <!-- Address -->
-      <div class="bg-primary-500/10 dark:bg-primary-400/10 rounded-3xl px-6 py-8">
-        <dt class="sr-only">Postal address</dt>
-        <dd class="flex h-full flex-col justify-between gap-12">
-          <svg
-            class="text-primary-600 dark:text-primary-400 h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              d="M12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995L16.9497 15.9497ZM12 13C10.8954 13 10 12.1046 10 11C10 9.89543 10.8954 9 12 9C13.1046 9 14 9.89543 14 11C14 12.1046 13.1046 13 12 13Z"
-            ></path>
-          </svg>
-          <div class="text-base font-medium">
-            <p>742 Evergreen Terrace</p>
-            <p>Springfield, OR 12345</p>
-          </div>
-        </dd>
-      </div>
+<section 
+  class="py-24 sm:py-32 relative overflow-hidden"
+  x-data="{ lightX: 50, lightY: 50 }"
+  @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+>
 
-      <!-- Phone number -->
-      <div class="bg-primary-500/10 dark:bg-primary-400/10 rounded-3xl px-6 py-8">
-        <dt class="sr-only">Phone number</dt>
-        <dd class="flex h-full flex-col justify-between gap-12">
-          <svg
-            class="text-primary-600 dark:text-primary-400 h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              d="M9.36556 10.6821C10.302 12.3288 11.6712 13.698 13.3179 14.6344L14.2024 13.3961C14.4965 12.9845 15.0516 12.8573 15.4956 13.0998C16.9024 13.8683 18.4571 14.3353 20.0789 14.4637C20.599 14.5049 21 14.9389 21 15.4606V19.9234C21 20.4361 20.6122 20.8657 20.1022 20.9181C19.5723 20.9726 19.0377 21 18.5 21C9.93959 21 3 14.0604 3 5.5C3 4.96227 3.02742 4.42771 3.08189 3.89776C3.1343 3.38775 3.56394 3 4.07665 3H8.53942C9.0611 3 9.49513 3.40104 9.5363 3.92109C9.66467 5.54288 10.1317 7.09764 10.9002 8.50444C11.1427 8.9484 11.0155 9.50354 10.6039 9.79757L9.36556 10.6821ZM6.84425 10.0252L8.7442 8.66809C8.20547 7.50514 7.83628 6.27183 7.64727 5H5.00907C5.00303 5.16632 5 5.333 5 5.5C5 12.9558 11.0442 19 18.5 19C18.667 19 18.8337 18.997 19 18.9909V16.3527C17.7282 16.1637 16.4949 15.7945 15.3319 15.2558L13.9748 17.1558C13.4258 16.9425 12.8956 16.6915 12.3874 16.4061L12.3293 16.373C10.3697 15.2587 8.74134 13.6303 7.627 11.6707L7.59394 11.6126C7.30849 11.1044 7.05754 10.5742 6.84425 10.0252Z"
-            ></path>
+  <!-- Halo Vision Pro -->
+  <div 
+    class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+    :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+  ></div>
+
+  <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div 
+      class="flex flex-col items-center text-center gap-6 mb-16 fade-block relative rounded-3xl px-8 py-10
+             backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+             shadow-[0_0_40px_rgba(120,160,255,0.15)]"
+    >
+
+      <!-- Glow interne -->
+      <div 
+        class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+               bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+      ></div>
+
+      <span class="relative z-10 text-sm font-medium text-blue-600 dark:text-blue-400 tracking-wide">
+        CONTACT
+      </span>
+
+      <h2 class="relative z-10 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+        Restons connectés
+      </h2>
+
+      <p class="relative z-10 text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl">
+        Une question, une idée, ou simplement envie d’échanger sur l’école de demain ?
+      </p>
+    </div>
+
+    <!-- Contact Grid -->
+    <dl class="grid gap-8 sm:grid-cols-3 fade-block">
+
+      <!-- Adresse -->
+      <a href="https://maps.google.com/?q=Abidjan+Côte+d'Ivoire" target="_blank"
+         class="group relative flex flex-col items-center text-center gap-4 p-6 rounded-2xl
+                backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+                shadow-[0_0_25px_rgba(120,160,255,0.15)]
+                hover:shadow-[0_0_40px_rgba(120,160,255,0.25)]
+                hover:scale-[1.03] transition-all duration-500">
+
+        <!-- Glow interne -->
+        <div 
+          class="absolute inset-0 rounded-2xl opacity-20 blur-xl pointer-events-none
+                 bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+        ></div>
+
+        <div class="relative z-10 w-12 h-12 rounded-xl bg-blue-500/10 dark:bg-blue-400/10 flex items-center justify-center">
+          <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          <p class="text-base font-medium">+1 (555) 123-4567</p>
+        </div>
+
+        <dd class="relative z-10">
+          <p class="text-lg font-medium text-gray-900 dark:text-white">Abidjan, Côte d’Ivoire</p>
         </dd>
-      </div>
+      </a>
+
+      <!-- Téléphone -->
+      <a href="tel:+2250716147915"
+         class="group relative flex flex-col items-center text-center gap-4 p-6 rounded-2xl
+                backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+                shadow-[0_0_25px_rgba(120,160,255,0.15)]
+                hover:shadow-[0_0_40px_rgba(120,160,255,0.25)]
+                hover:scale-[1.03] transition-all duration-500">
+
+        <!-- Glow interne -->
+        <div 
+          class="absolute inset-0 rounded-2xl opacity-20 blur-xl pointer-events-none
+                 bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+        ></div>
+
+        <div class="relative z-10 w-12 h-12 rounded-xl bg-blue-500/10 dark:bg-blue-400/10 flex items-center justify-center">
+          <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+        </div>
+
+        <dd class="relative z-10">
+          <p class="text-lg font-medium text-gray-900 dark:text-white">+225 07 16147915</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Lun–Ven, 9h–17h</p>
+        </dd>
+      </a>
 
       <!-- Email -->
-      <div class="bg-primary-500/10 dark:bg-primary-400/10 rounded-3xl px-6 py-8">
-        <dt class="sr-only">Email</dt>
-        <dd class="flex h-full flex-col justify-between gap-12">
-          <svg
-            class="text-primary-600 dark:text-primary-400 h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              d="M7.29117 20.8242L2 22L3.17581 16.7088C2.42544 15.3056 2 13.7025 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C10.2975 22 8.6944 21.5746 7.29117 20.8242ZM7.58075 18.711L8.23428 19.0605C9.38248 19.6745 10.6655 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 13.3345 4.32549 14.6175 4.93949 15.7657L5.28896 16.4192L4.63416 19.3658L7.58075 18.711Z"
-            ></path>
+      <a href="mailto:envsco@work-email.com"
+         class="group relative flex flex-col items-center text-center gap-4 p-6 rounded-2xl
+                backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+                shadow-[0_0_25px_rgba(120,160,255,0.15)]
+                hover:shadow-[0_0_40px_rgba(120,160,255,0.25)]
+                hover:scale-[1.03] transition-all duration-500">
+
+        <!-- Glow interne -->
+        <div 
+          class="absolute inset-0 rounded-2xl opacity-20 blur-xl pointer-events-none
+                 bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+        ></div>
+
+        <div class="relative z-10 w-12 h-12 rounded-xl bg-blue-500/10 dark:bg-blue-400/10 flex items-center justify-center">
+          <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          <p class="text-base font-medium">support@example.com</p>
+        </div>
+
+        <dd class="relative z-10">
+          <p class="text-lg font-medium text-gray-900 dark:text-white">envsco@work-email.com</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Réponse sous 24h</p>
         </dd>
-      </div>
+      </a>
+
     </dl>
+
+    <!-- Note -->
+    <div class="mt-16 text-center fade-block">
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Pour les écoles intéressées par un partenariat, utilisez l’objet 
+        <span class="font-medium text-blue-600 dark:text-blue-400">“École Partenaire ENVSCO”</span>
+      </p>
+    </div>
+
   </div>
 </section>

@@ -3,63 +3,190 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  description="Our privacy policy will help you understand what information is collected and how it is used."
-  title="Privacy policy · Stone"
+  description="Consultez la politique de confidentialité d’ENVSCO pour comprendre comment vos données sont collectées, utilisées et protégées."
+  title="Politique de confidentialité · ENVSCO"
 >
-  <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-    <div class="sm:pb:20 flex flex-col gap-4 pb-16 text-center">
-      <h1 class="text-4xl font-medium tracking-tight sm:text-5xl">Privacy Policy</h1>
-      <p class="text-base">Last update: July 31, 2023</p>
+  <section 
+    class="py-20 sm:py-28 relative overflow-hidden"
+    x-data="{ lightX: 50, lightY: 50 }"
+    @mousemove="lightX = ($event.clientX / innerWidth) * 100; lightY = ($event.clientY / innerHeight) * 100"
+  >
+
+    <!-- Halo Vision Pro -->
+    <div 
+      class="pointer-events-none absolute inset-0 opacity-40 blur-3xl transition-all duration-500"
+      :style="`background: radial-gradient(circle at ${lightX}% ${lightY}%, rgba(120,160,255,0.25), transparent 70%)`"
+    ></div>
+
+    <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+
+      <!-- Bloc VisionOS -->
+      <div
+        class="relative rounded-3xl px-8 py-16 sm:px-10 sm:py-20
+               backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/10
+               shadow-[0_0_45px_rgba(120,160,255,0.15)]"
+      >
+
+        <!-- Glow interne VisionOS -->
+        <div 
+          class="absolute inset-0 rounded-3xl opacity-20 blur-2xl pointer-events-none
+                 bg-[radial-gradient(circle_at_center,rgba(150,180,255,0.25),transparent_70%)]"
+        ></div>
+
+        <!-- Header -->
+        <div class="relative z-10 flex flex-col gap-4 pb-16 text-center">
+          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl text-gray-900 dark:text-white">
+            Politique de confidentialité
+          </h1>
+          <p class="text-base text-neutral-600 dark:text-neutral-400">
+            Dernière mise à jour : 27 décembre 2025
+          </p>
+        </div>
+
+        <!-- Contenu -->
+        <div class="relative z-10 text-neutral-700 dark:text-neutral-300 leading-relaxed space-y-10">
+
+          <p>
+            ENVSCO est un projet en phase pilote dédié à la modernisation de l’environnement scolaire.
+            Bien que le projet ne soit pas encore constitué en entité juridique, nous accordons une
+            importance essentielle à la protection des données personnelles des utilisateurs qui
+            participent à cette phase de test. Cette politique explique quelles données sont collectées,
+            comment elles sont utilisées et quels droits vous possédez.
+          </p>
+
+          <!-- SECTION 1 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">1. Responsable du traitement</h2>
+            <p>
+              ENVSCO étant actuellement en phase de développement et non encore enregistré comme entité
+              juridique, le responsable du traitement est :
+              <br /><br />
+              <strong>ENVSCO (projet en phase pilote)</strong><br />
+              Contact : <strong>gedenedavid@gmail.com</strong>
+              <br /><br />
+              Cette section sera mise à jour dès l’enregistrement officiel du projet.
+            </p>
+          </section>
+
+          <!-- SECTION 2 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">2. Informations collectées</h2>
+            <p>Nous pouvons collecter les catégories de données suivantes :</p>
+
+            <ul class="list-inside list-disc space-y-3 mt-4">
+              <li>
+                <strong>Données fournies volontairement :</strong> nom, prénom, adresse e‑mail, numéro de
+                téléphone, informations transmises via le formulaire de contact ou par les établissements
+                pilotes.
+              </li>
+              <li>
+                <strong>Données techniques :</strong> adresse IP, type d’appareil, navigateur, pages
+                consultées, horodatage, cookies essentiels.
+              </li>
+              <li>
+                <strong>Données scolaires (phase pilote uniquement) :</strong> informations administratives
+                minimales (nom, classe), données du carnet digital (notes, absences, communications).
+              </li>
+            </ul>
+          </section>
+
+          <!-- SECTION 3 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">3. Finalités de la collecte</h2>
+            <p>Les données collectées servent à :</p>
+
+            <ul class="list-inside list-disc space-y-3 mt-4">
+              <li>Fournir les fonctionnalités de la plateforme.</li>
+              <li>Améliorer l’expérience utilisateur et tester les modules en développement.</li>
+              <li>Communiquer avec les établissements pilotes.</li>
+              <li>Assurer la sécurité et la stabilité du service.</li>
+            </ul>
+          </section>
+
+          <!-- SECTION 4 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">4. Base légale du traitement</h2>
+            <p>Pendant la phase pilote, les traitements reposent sur :</p>
+
+            <ul class="list-inside list-disc space-y-3 mt-4">
+              <li><strong>Le consentement</strong> (formulaire de contact, participation volontaire).</li>
+              <li><strong>L’intérêt légitime</strong> (sécurisation, amélioration du service).</li>
+            </ul>
+          </section>
+
+          <!-- SECTION 5 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">5. Partage des données</h2>
+            <p>Les données peuvent être partagées uniquement avec :</p>
+
+            <ul class="list-inside list-disc space-y-3 mt-4">
+              <li>Nos prestataires techniques (hébergement, base de données, outils d’analyse).</li>
+              <li>Les établissements pilotes (uniquement pour les données scolaires les concernant).</li>
+            </ul>
+
+            <p class="mt-4">Aucun partage commercial ou publicitaire.</p>
+          </section>
+
+          <!-- SECTION 6 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">6. Hébergement et stockage</h2>
+            <p>
+              Les données peuvent être hébergées sur des services tiers tels que Supabase, MongoDB Atlas
+              ou d’autres prestataires offrant des standards élevés de sécurité.
+            </p>
+          </section>
+
+          <!-- SECTION 7 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">7. Durée de conservation</h2>
+            <ul class="list-inside list-disc space-y-3">
+              <li>Données de contact : <strong>12 mois</strong>.</li>
+              <li>Données scolaires : <strong>supprimées à la fin de la phase pilote</strong>.</li>
+              <li>Logs techniques : <strong>90 jours</strong>.</li>
+            </ul>
+          </section>
+
+          <!-- SECTION 8 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">8. Sécurité des données</h2>
+            <p>
+              Nous mettons en place des mesures techniques et organisationnelles : chiffrement HTTPS,
+              accès restreint, bonnes pratiques de développement sécurisé, suppression automatique des
+              données pilotes.
+            </p>
+          </section>
+
+          <!-- SECTION 9 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">9. Vos droits</h2>
+            <p>
+              Vous pouvez demander à tout moment : l’accès, la rectification, la suppression, la
+              limitation, l’opposition ou la portabilité de vos données.
+              <br />
+              Contact : <strong>envsco.team@outlook.com</strong>
+            </p>
+          </section>
+
+          <!-- SECTION 10 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">10. Cookies</h2>
+            <p>
+              Nous utilisons uniquement des cookies essentiels et, si activés, des cookies analytiques
+              anonymisés. Aucun cookie publicitaire.
+            </p>
+          </section>
+
+          <!-- SECTION 11 -->
+          <section>
+            <h2 class="text-xl font-medium sm:text-2xl mb-4">11. Mise à jour de cette politique</h2>
+            <p>
+              Cette politique sera mise à jour lorsque de nouvelles fonctionnalités seront ajoutées ou
+              lorsque ENVSCO deviendra une entité juridique officielle.
+            </p>
+          </section>
+
+        </div>
+      </div>
     </div>
-    <div>
-      <p class="mb-4">
-        At [Your Company Name], we are committed to safeguarding your privacy. This Privacy Policy
-        outlines how we collect, use, and protect your personal information when you use our
-        [website/app/service]. Please take a moment to read through this document to understand our
-        practices.
-      </p>
-      <h2 class="mb-6 mt-12 text-xl font-medium sm:text-2xl">1. Information We Collect</h2>
-      <p class="mb-6">
-        We may collect the following types of personal information when you interact with our
-        [website/app/service]:
-      </p>
-      <ul class="list-inside list-disc space-y-4">
-        <li>
-          Information you provide: When you sign up, create an account, or use certain features, we
-          may ask for your name, email address, contact details, and other relevant information.
-        </li>
-        <li>
-          Usage data: We may collect data about how you use our [website/app/service], including but
-          not limited to your IP address, browser type, device information, pages visited, and
-          interactions with the content.
-        </li>
-        <li>
-          Cookies and similar technologies: We use cookies and similar technologies to enhance your
-          experience, understand usage patterns, and improve our [website/app/service].
-        </li>
-      </ul>
-      <h2 class="mb-6 mt-12 text-xl font-medium sm:text-2xl">2. How We Use Your Information</h2>
-      <p class="mb-4">We may use your personal information for the following purposes:</p>
-      <ul class="list-inside list-disc space-y-4">
-        <li>
-          To provide and improve our [website/app/service]: Your information helps us offer a
-          personalized and user-friendly experience.
-        </li>
-        <li>
-          Communication: We may use your email address or contact details to send you important
-          updates, newsletters, and promotional content. You can opt-out of these communications at
-          any time.
-        </li>
-        <li>
-          Analytics: We use aggregated and anonymized data to analyze user behavior and improve our
-          [website/app/service].
-        </li>
-      </ul>
-      <h2 class="mb-6 mt-12 text-xl font-medium sm:text-2xl">Contact Us</h2>
-      <p class="mb-4">
-        If you have any questions or concerns about our Privacy Policy, please contact us at
-        [contact email/phone number/address].
-      </p>
-    </div>
-  </div>
+  </section>
 </Layout>
